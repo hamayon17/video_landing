@@ -14,12 +14,9 @@
 <script>
   const video = document.getElementById("introVideo");
 
-  video.onloadeddata = () => {
-    setTimeout(() => {
-      window.location.href = "https://hamayon.carrd.co";
-    }, 5000);
+  video.onended = () => {
+    window.location.href = "https://hamayon.carrd.co";
   };
 </script>
-
 </body>
 </html>
