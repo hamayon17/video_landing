@@ -6,7 +6,7 @@
 
 <body style="margin:0; background:#000; display:flex; justify-content:center; align-items:center; height:100vh;">
 
-  <video id="introVideo" autoplay muted playsinline
+  <video id="introVideo" autoplay muted playsinline preload="auto"
     style="width:80%; max-width:500px; border-radius:12px;">
     <source src="video.mp4" type="video/mp4">
   </video>
@@ -14,11 +14,18 @@
 <script>
   const video = document.getElementById("introVideo");
 
-  video.onloadeddata = () => {
-    setTimeout(() => {
-      window.location.href = "https://hamayon.carrd.co";
-    }, 6000);
+  // 🔁 Backup redirect (always works)
+  setTimeout(() => {
+    window.location.href = "https://your-carrd-link.carrd.co";
+  }, 6000);
+
+  // 🎬 If video plays, redirect after it ends
+  video.onended = () => {
+    window.location.href = "https://your-carrd-link.carrd.co";
   };
+
+  // ▶️ Force play (fix for some browsers)
+  video.play().catch(() => {});
 </script>
 
 </body>
